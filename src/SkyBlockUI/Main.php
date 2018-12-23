@@ -28,6 +28,11 @@ class Main extends PluginBase implements Listener{
             $this->getLogger()->error("SkyBlockUI Requires FormAPI To Work");
             $this->getPluginLoader()->disablePlugin($this);
         }
+        $this->sb = $this->getServer()->getPluginManager()->getPlugin("SkyBlock");
+        if(is_null($this->sb)){
+            $this->getLogger()->error("SkyBlockUI Requires SkyBlock To Work");
+            $this->getPluginLoader()->disablePlugin($this);
+        }
     }
 
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args):bool{
